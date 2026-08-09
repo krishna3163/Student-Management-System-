@@ -2,12 +2,12 @@
 	"info": {
 		"_postman_id": "c1f7a2b9-3891-4d32-8419-student-mgmt-api",
 		"name": "Student Management System - Spring Boot & MongoDB REST API",
-		"description": "Complete Postman collection for testing the Student Management System REST API built with Spring Boot, MongoDB, and Java.",
+		"description": "Student Management System REST API testing ke liye complete Postman collection.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Create Student",
+			"name": "Create Student (Aarav Sharma)",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -18,7 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"Alex\",\n    \"lastName\": \"Morgan\",\n    \"email\": \"alex.morgan@university.edu\",\n    \"department\": \"Computer Science\",\n    \"gpa\": 3.85,\n    \"enrolledCourses\": [\n        \"Data Structures\",\n        \"Database Systems\",\n        \"Web Development\"\n    ]\n}"
+					"raw": "{\n    \"firstName\": \"Aarav\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"aarav.sharma@university.ac.in\",\n    \"department\": \"Computer Science\",\n    \"gpa\": 3.85,\n    \"enrolledCourses\": [\n        \"Data Structures & Algorithms\",\n        \"Database Management Systems\",\n        \"Web Development with React\"\n    ]\n}"
 				},
 				"url": {
 					"raw": "{{base_url}}/api/v1/students",
@@ -31,7 +31,36 @@
 						"students"
 					]
 				},
-				"description": "Add a new student to the MongoDB database."
+				"description": "MongoDB database me naya Indian student record save karne ke liye."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Student (Priya Patel)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Priya\",\n    \"lastName\": \"Patel\",\n    \"email\": \"priya.patel@university.ac.in\",\n    \"department\": \"Information Technology\",\n    \"gpa\": 3.92,\n    \"enrolledCourses\": [\n        \"Java Programming\",\n        \"Cloud Computing\",\n        \"Cyber Security\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/students",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"students"
+					]
+				},
+				"description": "Dusra Indian student record insert karne ke liye."
 			},
 			"response": []
 		},
@@ -51,7 +80,7 @@
 						"students"
 					]
 				},
-				"description": "Retrieve list of all students."
+				"description": "Saare registered students ki list fetch karne ke liye."
 			},
 			"response": []
 		},
@@ -72,7 +101,7 @@
 						"STUDENT_ID_HERE"
 					]
 				},
-				"description": "Fetch details of a single student by their MongoDB String ID."
+				"description": "MongoDB ID se specific student search karne ke liye."
 			},
 			"response": []
 		},
@@ -94,7 +123,7 @@
 						"Computer Science"
 					]
 				},
-				"description": "Filter students belonging to a specific department."
+				"description": "Department name (e.g. Computer Science) ke aadhar par search karne ke liye."
 			},
 			"response": []
 		},
@@ -121,7 +150,7 @@
 						}
 					]
 				},
-				"description": "Get high performing students with GPA equal to or above the given threshold."
+				"description": "Minimum GPA threshold ke upar vaale students list karne ke liye."
 			},
 			"response": []
 		},
@@ -137,7 +166,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"Alex\",\n    \"lastName\": \"Morgan\",\n    \"email\": \"alex.morgan@university.edu\",\n    \"department\": \"Software Engineering\",\n    \"gpa\": 3.95,\n    \"enrolledCourses\": [\n        \"Data Structures\",\n        \"Database Systems\",\n        \"Cloud Computing\"\n    ]\n}"
+					"raw": "{\n    \"firstName\": \"Aarav\",\n    \"lastName\": \"Sharma\",\n    \"email\": \"aarav.sharma@university.ac.in\",\n    \"department\": \"Artificial Intelligence\",\n    \"gpa\": 3.95,\n    \"enrolledCourses\": [\n        \"Data Structures\",\n        \"Machine Learning\",\n        \"Neural Networks\"\n    ]\n}"
 				},
 				"url": {
 					"raw": "{{base_url}}/api/v1/students/STUDENT_ID_HERE",
@@ -151,7 +180,7 @@
 						"STUDENT_ID_HERE"
 					]
 				},
-				"description": "Update an existing student's info by ID."
+				"description": "Student details update karne ke liye."
 			},
 			"response": []
 		},
@@ -172,7 +201,7 @@
 						"STUDENT_ID_HERE"
 					]
 				},
-				"description": "Remove a student record from the database by ID."
+				"description": "Student record delete karne ke liye."
 			},
 			"response": []
 		}

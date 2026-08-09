@@ -4,13 +4,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * Custom exception thrown when a requested resource (e.g. Student) is not found in the database.
+ * Jab koi requested resource (Jaise Student record) database me nahi milta tab ye exception throw hota hai (HTTP 404).
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends RuntimeException {
 
     public ResourceNotFoundException(String resourceName, String fieldName, Object fieldValue) {
-        super(String.format("%s not found with %s : '%s'", resourceName, fieldName, fieldValue));
+        super(String.format("%s nahi mila %s : '%s' ke sath", resourceName, fieldName, fieldValue));
     }
 
     public ResourceNotFoundException(String message) {

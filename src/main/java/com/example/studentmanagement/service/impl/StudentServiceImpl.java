@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Service implementation handling business logic for Student entity operations.
+ * Service Implementation class jo saare business logic aur database operations handle karti hai.
  */
 @Service
 @RequiredArgsConstructor
@@ -21,10 +21,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student createStudent(Student student) {
-        // Business Rule: Check if email already exists
+        // Business Rule: Check karo agar email pehle se exist karti hai
         if (studentRepository.existsByEmail(student.getEmail())) {
             throw new DuplicateResourceException(
-                    "Student with email '" + student.getEmail() + "' already exists!"
+                    "Student email '" + student.getEmail() + "' pehle se exist karti hai!"
             );
         }
         return studentRepository.save(student);
@@ -32,37 +32,43 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getAllStudents() {
+        // Database se saare student records fetch karo
         return studentRepository.findAll();
     }
 
     @Override
     public Student getStudentById(String id) {
+        // ID se student find karo, agar nahi mile toh custom exception throw karo
         return studentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student", "id", id));
     }
 
     @Override
     public List<Student> getStudentsByDepartment(String department) {
+        // Department name se search karo (case-insensitive)
         return studentRepository.findByDepartmentIgnoreCase(department);
     }
 
     @Override
     public List<Student> getStudentsByMinGpa(Double minGpa) {
+        // Minimum GPA threshold ke basis par filter karo
         return studentRepository.findByGpaGreaterThanEqual(minGpa);
     }
 
     @Override
     public Student updateStudent(String id, Student studentDetails) {
+        // Pehle check karo ki student record database me hai ya nahi
         Student existingStudent = getStudentById(id);
 
-        // If email is changing, ensure new email is not already taken
+        // Agar email change ho raha hai, toh verify karo ki naya email kisi aur student ke paas toh nahi hai
         if (!existingStudent.getEmail().equalsIgnoreCase(studentDetails.getEmail()) 
                 && studentRepository.existsByEmail(studentDetails.getEmail())) {
             throw new DuplicateResourceException(
-                    "Email '" + studentDetails.getEmail() + "' is already in use by another student!"
+                    "Email '" + studentDetails.getEmail() + "' kisi aur student dwara pehle se registered hai!"
             );
         }
 
+        // Student ki details update karo
         existingStudent.setFirstName(studentDetails.getFirstName());
         existingStudent.setLastName(studentDetails.getLastName());
         existingStudent.setEmail(studentDetails.getEmail());
@@ -70,11 +76,13 @@ public class StudentServiceImpl implements StudentService {
         existingStudent.setGpa(studentDetails.getGpa());
         existingStudent.setEnrolledCourses(studentDetails.getEnrolledCourses());
 
+        // Updated record save karo
         return studentRepository.save(existingStudent);
     }
 
     @Override
     public void deleteStudent(String id) {
+        // Student exist karta hai ya nahi check karke delete karo
         Student existingStudent = getStudentById(id);
         studentRepository.delete(existingStudent);
     }

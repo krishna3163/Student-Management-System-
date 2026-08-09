@@ -14,13 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Controller Advice that intercepts and handles exceptions globally across the application.
+ * Controller Advice jo pure application me real-time exceptions ko catch karke uniform JSON error response banata hai.
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     /**
-     * Handle ResourceNotFoundException (HTTP 404 Not Found)
+     * ResourceNotFoundException handle karne ke liye (HTTP 404)
      */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorDetails> handleResourceNotFoundException(
@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Handle DuplicateResourceException (HTTP 409 Conflict)
+     * DuplicateResourceException handle karne ke liye (HTTP 409)
      */
     @ExceptionHandler(DuplicateResourceException.class)
     public ResponseEntity<ErrorDetails> handleDuplicateResourceException(
@@ -54,7 +54,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Handle Validation Errors from @Valid annotations (HTTP 400 Bad Request)
+     * Validation Errors handle karne ke liye (HTTP 400 Bad Request)
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorDetails> handleValidationExceptions(
@@ -71,7 +71,7 @@ public class GlobalExceptionHandler {
                 LocalDateTime.now(),
                 HttpStatus.BAD_REQUEST.value(),
                 "Validation Failed",
-                "Input validation failed for one or more fields",
+                "Input fields validation fail ho gayi hai",
                 request.getDescription(false).replace("uri=", ""),
                 errors
         );
@@ -79,7 +79,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Handle Generic Uncaught Exceptions (HTTP 500 Internal Server Error)
+     * Generic uncaught exceptions handle karne ke liye (HTTP 500)
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleGlobalException(

@@ -1,6 +1,6 @@
 # 🎓 Student Management System - Spring Boot & MongoDB REST API
 
-A clean, production-ready, beginner-friendly **Spring Boot REST API** built with **Java**, **Spring Data MongoDB**, and **MongoDB**. Designed for students taking their first steps into Spring Boot development and RESTful web service architecture.
+A clean, production-ready **Spring Boot REST API** built with **Java**, **Spring Data MongoDB**, and **MongoDB**. Specially designed for Indian students creating their first project in Spring Boot. All code comments are in easy-to-understand **Hinglish**!
 
 ---
 
@@ -11,7 +11,7 @@ A clean, production-ready, beginner-friendly **Spring Boot REST API** built with
 - **Database**: MongoDB (Local or MongoDB Atlas)
 - **Data Access**: Spring Data MongoDB (`MongoRepository`)
 - **Validation**: Jakarta Bean Validation (`@Valid`, `@Email`, `@NotBlank`)
-- **Utilities**: Project Lombok (reduces boilerplate code)
+- **Utilities**: Project Lombok (code boilerplate kam karne ke liye)
 - **API Testing**: Postman (Pre-built Collection included)
 
 ---
@@ -53,109 +53,96 @@ Student-Management-System/
 
 ---
 
-## 🚀 Step 1: Database Setup (MongoDB)
+## 🚀 Step 1: Database Setup (MongoDB Setup)
 
 ### Option A: Local MongoDB
-1. Ensure MongoDB Community Server is installed and running on default port `27017`.
-2. The application will automatically create the database `student_db` and collection `students` on first insertion.
+1. Ensure karein ki local MongoDB Community Server aapke PC par install hai aur port `27017` par run ho raha hai.
+2. Spring Boot application first record insert karte hi `student_db` database aur `students` collection automatic create kar dega.
 
-### Option B: MongoDB Atlas (Cloud)
-1. Sign up for a free tier at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
-2. Create a database cluster and get your connection string.
-3. Open `src/main/resources/application.properties` and replace the URI:
+### Option B: MongoDB Atlas (Cloud Database)
+1. Free account banayein [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) par.
+2. `src/main/resources/application.properties` file open karein aur URI replace karein:
    ```properties
    spring.data.mongodb.uri=mongodb+srv://<username>:<password>@cluster0.mongodb.net/student_db?retryWrites=true&w=majority
    ```
 
 ---
 
-## 🏃 Step 2: Running the Spring Boot Application
+## 🏃 Step 2: Spring Boot Application Run Karein
 
-### Using Maven Command Line:
+### Command Line se Run karne ke liye:
 ```bash
-# In Windows PowerShell / CMD:
+# Terminal / PowerShell me command chalayein:
 mvn spring-boot:run
 ```
 
-### Using IDE (IntelliJ IDEA / Eclipse / VS Code):
-1. Open `Student-Management-System` directory in your IDE.
-2. Locate `src/main/java/com/example/studentmanagement/StudentManagementApplication.java`.
-3. Right-click and choose **Run 'StudentManagementApplication'**.
+### IDE (IntelliJ / Eclipse / VS Code) se Run karne ke liye:
+1. `Student-Management-System` folder open karein.
+2. `src/main/java/com/example/studentmanagement/StudentManagementApplication.java` par right-click karke **Run** press karein.
 
-The application will start on port `8080` at: `http://localhost:8080/api/v1/students`
+Application URL: `http://localhost:8080/api/v1/students`
 
 ---
 
-## 📬 Step 3: API Testing with Postman
+## 📬 Step 3: Postman se API Test Karein
 
-A ready-to-import Postman Collection is included in the project under the `postman/` directory:
+Postman Collection JSON file yahan milti hai:
 📄 [postman/Student_Management_System.postman_collection.json](file:///f:/Student-Management-System/postman/Student_Management_System.postman_collection.json)
 
-### How to Import into Postman:
-1. Open Postman.
-2. Click the **Import** button in the top-left corner.
-3. Choose **File** -> Select `postman/Student_Management_System.postman_collection.json`.
-4. Run requests directly!
+### Import Kaise Karein:
+1. Postman app open karein.
+2. Top-left corner me **Import** button par click karein.
+3. `postman/Student_Management_System.postman_collection.json` file select karke import karein.
 
 ---
 
-## 📋 REST API Endpoints Reference
+## 📋 REST API Endpoints Table
 
 | Method | Endpoint | Description | Status Code |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/api/v1/students` | Create a new student | `201 Created` |
-| `GET` | `/api/v1/students` | Get all students | `200 OK` |
-| `GET` | `/api/v1/students/{id}` | Get student by MongoDB ID | `200 OK` / `404 Not Found` |
-| `GET` | `/api/v1/students/department/{dept}` | Filter students by department | `200 OK` |
-| `GET` | `/api/v1/students/gpa?minGpa=3.5` | Filter students by minimum GPA | `200 OK` |
-| `PUT` | `/api/v1/students/{id}` | Update student details | `200 OK` / `404 Not Found` |
-| `DELETE` | `/api/v1/students/{id}` | Delete student by ID | `200 OK` / `404 Not Found` |
+| `POST` | `/api/v1/students` | Naya student add karein | `201 Created` |
+| `GET` | `/api/v1/students` | Saare students fetch karein | `200 OK` |
+| `GET` | `/api/v1/students/{id}` | MongoDB ID se student search karein | `200 OK` / `404 Not Found` |
+| `GET` | `/api/v1/students/department/{dept}` | Department se filter karein | `200 OK` |
+| `GET` | `/api/v1/students/gpa?minGpa=3.5` | Minimum GPA se filter karein | `200 OK` |
+| `PUT` | `/api/v1/students/{id}` | Student update karein | `200 OK` / `404 Not Found` |
+| `DELETE` | `/api/v1/students/{id}` | Student delete karein | `200 OK` / `404 Not Found` |
 
 ---
 
-## 💡 Sample Requests & Responses
+## 💡 Sample JSON Payload (Indian Student Example)
 
-### 1. Create Student (`POST /api/v1/students`)
-**Request Body**:
+### Create Student Request (`POST /api/v1/students`)
 ```json
 {
-    "firstName": "Alex",
-    "lastName": "Morgan",
-    "email": "alex.morgan@university.edu",
+    "firstName": "Aarav",
+    "lastName": "Sharma",
+    "email": "aarav.sharma@university.ac.in",
     "department": "Computer Science",
     "gpa": 3.85,
     "enrolledCourses": [
-        "Data Structures",
-        "Database Systems",
-        "Web Development"
+        "Data Structures & Algorithms",
+        "Database Management Systems",
+        "Web Development with React"
     ]
 }
 ```
 
-**Response Body (`201 Created`)**:
+### Response (`201 Created`)
 ```json
 {
     "id": "65c3f1a2b938914d328419ef",
-    "firstName": "Alex",
-    "lastName": "Morgan",
-    "email": "alex.morgan@university.edu",
+    "firstName": "Aarav",
+    "lastName": "Sharma",
+    "email": "aarav.sharma@university.ac.in",
     "department": "Computer Science",
     "gpa": 3.85,
     "enrolledCourses": [
-        "Data Structures",
-        "Database Systems",
-        "Web Development"
+        "Data Structures & Algorithms",
+        "Database Management Systems",
+        "Web Development with React"
     ],
     "createdAt": "2026-08-09T10:30:00",
     "updatedAt": "2026-08-09T10:30:00"
 }
 ```
-
----
-
-## 📌 Features Learned in this Project
-
-1. **Layered Architecture**: Separation of concerns (`Controller` -> `Service` -> `Repository` -> `Model`).
-2. **Spring Data MongoDB**: Utilizing `MongoRepository` for automatic CRUD logic and custom query methods without writing boilerplate queries.
-3. **Request Validation**: Automatic request body checks via `@Valid` annotations.
-4. **Global Exception Handling**: Centralized exception handler using `@RestControllerAdvice` returning standard HTTP error payloads.

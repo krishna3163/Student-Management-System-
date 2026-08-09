@@ -19,8 +19,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * MongoDB Document representing a Student entity in the database.
- * Map to the 'students' collection in MongoDB.
+ * MongoDB Document representation for Student entity.
+ * MongoDB collection name: 'students'
  */
 @Data
 @NoArgsConstructor
@@ -30,32 +30,32 @@ import java.util.List;
 public class Student {
 
     @Id
-    private String id;
+    private String id; // MongoDB dwara generate ki gayi unique String ID
 
-    @NotBlank(message = "First name is mandatory")
-    private String firstName;
+    @NotBlank(message = "First name mandatory hai, khali nahi ho sakta")
+    private String firstName; // Student ka first name (e.g. Aarav, Rahul)
 
-    @NotBlank(message = "Last name is mandatory")
-    private String lastName;
+    @NotBlank(message = "Last name mandatory hai, khali nahi ho sakta")
+    private String lastName; // Student ka last name (e.g. Sharma, Verma)
 
-    @NotBlank(message = "Email is mandatory")
-    @Email(message = "Email should be valid")
+    @NotBlank(message = "Email address mandatory hai")
+    @Email(message = "Valid email address enter karein")
     @Indexed(unique = true)
-    private String email;
+    private String email; // Student ki unique email ID (e.g. aarav.sharma@college.ac.in)
 
-    @NotBlank(message = "Department is mandatory")
-    private String department;
+    @NotBlank(message = "Department mandatory hai")
+    private String department; // Department (e.g. Computer Science, Information Technology)
 
-    @NotNull(message = "GPA is mandatory")
-    @Min(value = 0, message = "GPA cannot be less than 0.0")
-    @Max(value = 4, message = "GPA cannot be greater than 4.0")
-    private Double gpa;
+    @NotNull(message = "GPA mandatory hai")
+    @Min(value = 0, message = "GPA 0.0 se kam nahi ho sakta")
+    @Max(value = 4, message = "GPA 4.0 se zyada nahi ho sakta")
+    private Double gpa; // Student ka GPA (0.0 - 4.0)
 
-    private List<String> enrolledCourses;
+    private List<String> enrolledCourses; // Enrolled subjects ki list (e.g. Java, DBMS, Web Tech)
 
     @CreatedDate
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt; // Record create hone ka timestamp
 
     @LastModifiedDate
-    private LocalDateTime updatedAt;
+    private LocalDateTime updatedAt; // Record last update hone ka timestamp
 }

@@ -5,42 +5,42 @@ import com.example.studentmanagement.model.Student;
 import java.util.List;
 
 /**
- * Service Interface defining business contracts for Student operations.
+ * Service interface jo Student management business methods define karta hai.
  */
 public interface StudentService {
 
     /**
-     * Create and save a new student record.
+     * Naya student record database me save karne ke liye.
      */
     Student createStudent(Student student);
 
     /**
-     * Retrieve all students from the database.
+     * Database me se saare students ki list fetch karne ke liye.
      */
     List<Student> getAllStudents();
 
     /**
-     * Retrieve a single student by unique ID.
+     * Unique ID se single student ki detail search karne ke liye.
      */
     Student getStudentById(String id);
 
     /**
-     * Retrieve students filtered by department.
+     * Department wise students search karne ke liye.
      */
     List<Student> getStudentsByDepartment(String department);
 
     /**
-     * Retrieve students with GPA >= minimum GPA threshold.
+     * Minimum GPA ke basis par top students filter karne ke liye.
      */
     List<Student> getStudentsByMinGpa(Double minGpa);
 
     /**
-     * Update an existing student's details by ID.
+     * Existing student ki details ID dwara update karne ke liye.
      */
     Student updateStudent(String id, Student studentDetails);
 
     /**
-     * Delete a student by ID.
+     * Student record ko database se remove karne ke liye.
      */
     void deleteStudent(String id);
 }
