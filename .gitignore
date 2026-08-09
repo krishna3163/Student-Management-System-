@@ -1,0 +1,17 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!target/classes/META-INF/
+
+### Settings ###
+.mvn/
+.idea/
+.project
+.classpath
+.settings/
+*.iml
+*.ipr
+*.iws
+
+### Logs & Temp ###
+*.log
+*.tmp

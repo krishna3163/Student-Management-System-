@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "c1f7a2b9-3891-4d32-8419-student-mgmt-api",
+		"name": "Student Management System - Spring Boot & MongoDB REST API",
+		"description": "Complete Postman collection for testing the Student Management System REST API built with Spring Boot, MongoDB, and Java.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Student",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Alex\",\n    \"lastName\": \"Morgan\",\n    \"email\": \"alex.morgan@university.edu\",\n    \"department\": \"Computer Science\",\n    \"gpa\": 3.85,\n    \"enrolledCourses\": [\n        \"Data Structures\",\n        \"Database Systems\",\n        \"Web Development\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/students",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"students"
+					]
+				},
+				"description": "Add a new student to the MongoDB database."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Students",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/students",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"students"
+					]
+				},
+				"description": "Retrieve list of all students."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Student By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/students/STUDENT_ID_HERE",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"STUDENT_ID_HERE"
+					]
+				},
+				"description": "Fetch details of a single student by their MongoDB String ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Students By Department",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/students/department/Computer Science",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"department",
+						"Computer Science"
+					]
+				},
+				"description": "Filter students belonging to a specific department."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Students By Min GPA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/students/gpa?minGpa=3.5",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"gpa"
+					],
+					"query": [
+						{
+							"key": "minGpa",
+							"value": "3.5"
+						}
+					]
+				},
+				"description": "Get high performing students with GPA equal to or above the given threshold."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Student",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Alex\",\n    \"lastName\": \"Morgan\",\n    \"email\": \"alex.morgan@university.edu\",\n    \"department\": \"Software Engineering\",\n    \"gpa\": 3.95,\n    \"enrolledCourses\": [\n        \"Data Structures\",\n        \"Database Systems\",\n        \"Cloud Computing\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/students/STUDENT_ID_HERE",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"STUDENT_ID_HERE"
+					]
+				},
+				"description": "Update an existing student's info by ID."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Student",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/students/STUDENT_ID_HERE",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"STUDENT_ID_HERE"
+					]
+				},
+				"description": "Remove a student record from the database by ID."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
